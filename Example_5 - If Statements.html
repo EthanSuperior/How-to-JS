@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>
+This is my Title
+</title>
+
+
+<script lang='javascript'>
+
+
+function GetArea(type, value){
+	//Demonstrate all the inequalities != && < && >=
+	if(type == 0){
+		CircleArea(value);
+	} else if(type == 1){
+		SquareArea(value);
+	} else {
+		document.getElementById('output').innerHTML  = "Equals: Unknown Type";
+	}
+}
+
+function CircleArea(r){
+	var PI = 3.14159265;
+	var area = r * r * PI;
+	document.getElementById('output').innerHTML  = "Equals: Circle - " + area;
+}
+function SquareArea(s){
+	var area = s * s;
+	document.getElementById('output').innerHTML  = "Equals: Square - " + area;
+}
+
+
+</script>
+
+
+</head>
+<body>
+Type: 
+<input type='text' id='inputType' value='0'/>
+Radius: 
+<input type='text' id='input' value='2'/>
+<button id='button' onclick='GetArea(document.getElementById("inputType").value,document.getElementById("input").value)'>Get Area</button>
+<div id='output'>Equals: </div>
+</body>
+</html>

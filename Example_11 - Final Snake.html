@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>
+This is my Title
+</title>
+<script lang='javascript'>
+var canvas = null;
+var timer;
+
+var snakeX = [], snakeY = [];
+var x = 50, y = 50;
+var foodX = 4, foodY = 4, direction = 4;
+
+function OnLoad(){
+	canvas = document.getElementById('output').getContext('2d');
+	canvas.fillStyle = "#000000";
+	canvas.fillRect(0, 0, 500, 500);
+	snakeX = [];
+	snakeY = [];
+	x = 50;
+	y = 50;
+	foodX = 4;
+	foodY = 4;
+	direction = 4;
+	NewFood();
+	//AddSegment();
+	timer=setInterval("MoveSnake()",125);
+}
+
+function NewFood(){
+	foodX = Math.floor(Math.random()*100);
+	foodY = Math.floor(Math.random()*100);
+}
+
+function AddSegment(){
+	snakeX.unshift(x);
+	snakeY.unshift(y);
+}
+
+function GameOver(){
+	alert("Game Over!!" +"\nYour Score Was: " + snakeX.length);
+	//OnLoad();
+}
+
+document.onkeypress = function EnterKey(e){
+	var key = e.keyCode;
+	if(key == 97){//Left
+		direction = 0;
+	} else if(key == 100){//Right
+		direction = 1;
+	} else if(key == 119){//Up
+		direction = 2;
+	}else if(key == 115){//Down
+		direction = 3;
+	}
+}
+
+function MoveSnake(){
+	canvas.fillStyle = "#000000";
+	canvas.fillRect(0, 0, 500, 500);
+	if(direction == 0){
+		x-=1;
+	} else if(direction == 1){
+		x+=1;
+	} else if(direction == 2){
+		y -=1;
+	} else if(direction == 3){
+		y +=1;
+	}
+	AddSegment();
+	if(x==foodX&&y==foodY){
+		NewFood();
+	} else {
+		snakeX.pop();
+		snakeY.pop();
+	}
+	let cannibalism = (x<0||x>100||y<0||y>100);
+	canvas.fillStyle = "#FFFFFF";
+	for(var i=0;i<snakeX.length;i++){
+		canvas.fillRect(snakeX[i]*5,snakeY[i]*5,5,5);
+		if(i!=0 && snakeX[i] == x && snakeY[i] == y) cannibalism = true; 
+	}
+	canvas.fillStyle = "#FF7777";
+	canvas.fillRect(foodX*5,foodY*5,5,5);
+	if(cannibalism) GameOver();
+}
+
+</script>
+</head>
+<body onload='OnLoad()'>
+<canvas id='output' width = "500" height = "500"/>
+</body>
+</html>

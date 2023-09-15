@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>
+This is my Title
+</title>
+<script lang='javascript'>
+var canvas = null;
+var timer;
+//Explain the necessity of OnLoad
+function OnLoad(){
+	canvas = document.getElementById('output').getContext('2d');
+	canvas.fillStyle = "#000000";
+	canvas.fillRect(0, 0, 500, 500);
+	//Explain timers
+	timer = setInterval("Draw()",125);
+}
+//Show other versions of fill and the draw function
+function Draw(){
+	canvas.fillCircle(123,321,5,3);
+}
+document.onkeypress = function EnterKey(e){
+	var key = e.keyCode - 50;
+	//Explain Hexidecimal colors
+	canvas.fillStyle = "#FFFFFF";
+	canvas.fillRect(key*5, key*5, 5, 5);
+}
+</script>
+</head>
+<body onload='OnLoad()'>
+<canvas id='output' width = "500" height = "500"/>
+</body>
+</html>

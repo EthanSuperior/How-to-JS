@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>
+This is my Title
+</title>
+
+
+<script lang='javascript'>
+
+//Explain unshift and shift as well.
+var outputs = [];
+
+function GetArea(type, value){
+	if(type == 0){
+		CircleArea(value);
+	} else if(type == 1){
+		SquareArea(value);
+	} else {
+		outputs.pop();
+	}
+	document.getElementById('output').innerHTML  = "Equals: " + outputs;
+}
+
+function CircleArea(r){
+	var PI = 3.14159265;
+	var area = r * r * PI;
+	outputs.push(area);
+}
+function SquareArea(s){
+	outputs.push(s * s);
+}
+
+
+</script>
+
+
+</head>
+<body>
+Type: 
+<input type='text' id='inputType' value='0'/>
+Radius: 
+<input type='text' id='input' value='2'/>
+<button id='button' onclick='GetArea(document.getElementById("inputType").value,document.getElementById("input").value)'>Get Area</button>
+<div id='output'>Equals: </div>
+</body>
+</html>

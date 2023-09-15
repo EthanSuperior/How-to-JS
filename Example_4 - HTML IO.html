@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>
+This is my Title
+</title>
+
+
+<script lang='javascript'>
+
+
+function CircleArea(r){
+	var PI = 3.14159265;
+	var area = r * r * PI;
+	//Explain some of the properites that things have
+	document.getElementById('output').innerHTML  = "Equals: " + area;
+}
+
+
+</script>
+
+
+</head>
+<body>
+Radius: 
+<input type='text' id='input' value='2'/>
+<button id='button' onclick='CircleArea(document.getElementById("input").value)'>Get Area</button>
+<div id='output'>Equals: </div>
+</body>
+</html>

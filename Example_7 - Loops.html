@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>
+This is my Title
+</title>
+<script lang='javascript'>
+
+var outputs = [];
+
+function GetArea(max){
+	outputs = [];
+	//Make sure to mention i.
+	for(var iterator = 0; iterator < max; iterator+=1){
+		SquareArea(iterator);
+	}
+	outputs.push(999);
+	while(max>0){ //Talk about the diff between for and while
+		SquareArea(max);
+		max-=1;
+	}
+	document.getElementById('output').innerHTML  = "Equals: " + outputs;
+}
+function SquareArea(s){
+	var area = s * s;
+	outputs.push(area);
+}
+
+
+</script>
+</head>
+<body>
+Max: <input type='text' id='input' value='2'/>
+<button id='button' onclick='GetArea(document.getElementById("input").value)'>Get Area</button>
+<div id='output'>Equals: </div>
+</body>
+</html>
